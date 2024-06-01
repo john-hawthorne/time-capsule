@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+      <UserSecretsId>e3002510-3297-4968-909b-da8465535c25</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TimeCapsule.Entities\TimeCapsule.Entities.csproj" />
+      <ProjectReference Include="..\TimeCapsule.Services\TimeCapsule.Services.csproj" />
+    </ItemGroup>
+
+</Project>

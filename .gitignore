@@ -1,0 +1,8 @@
+.idea/
+.vs/
+TimeCapsule.Web/Properties/PublishProfiles/
+TimeCapsule.Web/TimeCapsule.Web.csproj.user
+TimeCapsule.Entities/appsettings.local.json
+*/bin
+*/obj
+.DS_Store
