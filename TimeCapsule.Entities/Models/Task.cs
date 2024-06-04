@@ -20,6 +20,4 @@ public class Task
 
     public TaskType? TaskType { get; set; }
     public int TaskTypeId { get; set; }
-    public Guid UserId { get; set; }
-    public User User { get; set; } = null!;
 }

@@ -9,7 +9,4 @@ public class Schedule
     [Required]
     public DateTime ScheduleDate { get; set; }
     public ICollection<TimeSlot> TimeSlots { get; } = new List<TimeSlot>();
-
-    public Guid UserId { get; set; }
-    public User User { get; set; } = null!;
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TimeCapsule.Entities.Context;
 
@@ -11,9 +12,11 @@ using TimeCapsule.Entities.Context;
 namespace TimeCapsule.Entities.Migrations
 {
     [DbContext(typeof(TimeCapsuleDbContext))]
-    partial class TimeCapsuleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240604172816_InitialSchema")]
+    partial class InitialSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

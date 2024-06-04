@@ -36,7 +36,6 @@ public class TaskSchedulerService : ITaskSchedulerService
         {
             Id = Guid.NewGuid(),
             ScheduleDate = scheduleDate.Date,
-            UserId = Guid.Parse("8be245ce-60f6-4ef6-9eb2-05c5fd3df22d") // temp userid
         };
         
         // 2) Create Tasks From TaskNames
@@ -77,7 +76,6 @@ public class TaskSchedulerService : ITaskSchedulerService
         {
             Id = Guid.NewGuid(),
             ScheduleDate = scheduleDate.Date,
-            UserId = Guid.Parse("8be245ce-60f6-4ef6-9eb2-05c5fd3df22d") // temp userid
         };
         
         // 2) Create Tasks From TaskNames
@@ -110,7 +108,6 @@ public class TaskSchedulerService : ITaskSchedulerService
         {
             var task = new Task();
             task.Id = Guid.NewGuid();
-            task.UserId = Guid.Parse("8be245ce-60f6-4ef6-9eb2-05c5fd3df22d"); // temp userid
             task.Name = taskName != String.Empty ? taskName : "(No name)";
             task.StartTime = scheduleDate.Date;
             task.EndTime = scheduleDate.Date;
@@ -125,7 +122,6 @@ public class TaskSchedulerService : ITaskSchedulerService
         {
             var task = new Task();
             task.Id = Guid.NewGuid();
-            task.UserId = Guid.Parse("8be245ce-60f6-4ef6-9eb2-05c5fd3df22d"); // temp userid
             task.Name = "(No name)";
             task.StartTime = scheduleDate.Date;
             task.EndTime = scheduleDate.Date;
