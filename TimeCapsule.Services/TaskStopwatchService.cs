@@ -49,7 +49,6 @@ public class TaskStopwatchService : ITaskStopwatchService
         task.StartTime = startTime;
         task.EndTime = endTime;
         task.ElapsedTime = ts.ToString("c");
-//        task.UserId = Guid.Parse("8be245ce-60f6-4ef6-9eb2-05c5fd3df22d");
         _tasks.Add(task);
 
         _context.SaveChanges();
