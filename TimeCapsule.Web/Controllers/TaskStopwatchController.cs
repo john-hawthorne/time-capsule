@@ -15,14 +15,24 @@ public class TaskStopwatchController : ControllerBase
         _taskStopwatchService = taskStopwatchService;
     }
     
-    [HttpGet]
+    [HttpGet("GetTasks")]
     public IActionResult Get(DateTime selectedDate, int taskTypeId)
     {
         var tasks = _taskStopwatchService.GetTasks(selectedDate, taskTypeId);
         return Ok(tasks);
     }
 
-    [HttpPost]
+    [HttpPost("AddManualTask")]
+    public IActionResult Post(string id, string name, DateTime startDate, int startHours, int startMinutes, int startSeconds, string startPeriod, DateTime endDate,
+    int endHours, int endMinutes, int endSeconds, string endPeriod, int taskTypeId)
+    {
+        _taskStopwatchService.addManualTask(id, name, startDate, startHours, startMinutes, startSeconds, startPeriod,
+            endDate, endHours, endMinutes, endSeconds, endPeriod, taskTypeId);
+
+        return Ok();
+    }
+
+    [HttpPost("AddTask")]
     public IActionResult Post(string name, int elapsedHour, int elapsedMinute, int elapsedSecond, DateTime startTime,
         int taskTypeId)
     {
@@ -31,7 +41,7 @@ public class TaskStopwatchController : ControllerBase
         return Ok();
     }
     
-    [HttpPut]
+    [HttpPut("UpdateTask")]
     public IActionResult Put(string id, string name, DateTime startDate, int startHours, int startMinutes, int startSeconds, string startPeriod, DateTime endDate,
         int endHours, int endMinutes, int endSeconds, string endPeriod, int taskTypeId)
     {
@@ -41,7 +51,7 @@ public class TaskStopwatchController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete] 
+    [HttpDelete("DeleteTask")] 
     public IActionResult Delete(string id) 
     {
         _taskStopwatchService.DeleteTask(id);

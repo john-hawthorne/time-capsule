@@ -6,3 +6,5 @@ TimeCapsule.Entities/appsettings.local.json
 */bin
 */obj
 .DS_Store
+TimeCapsule.Services/Properties/
+TimeCapsule.Services/TimeCapsule.Services.csproj.user

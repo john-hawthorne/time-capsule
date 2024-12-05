@@ -54,6 +54,23 @@ public class TaskStopwatchService : ITaskStopwatchService
 
         _context.SaveChanges();
     }
+    public void addManualTask(string id, string name, DateTime startDate, int startHours, int startMinutes, int startSeconds, string startPeriod, DateTime endDate, int endHours, int endMinutes, int endSeconds, string endPeriod, int taskTypeId)
+    {
+        var startTime = new DateTime(startDate.Year, startDate.Month, startDate.Day, DetermineHours(startHours, startPeriod), startMinutes, startSeconds);
+        var endTime = new DateTime(endDate.Year, endDate.Month, endDate.Day, DetermineHours(endHours, endPeriod), endMinutes, endSeconds);
+        var elapsedTime = endTime.Subtract(startTime);
+        var task = new Task();
+        task.Id = Guid.NewGuid();
+        task.Name = name;
+        task.TaskType = _taskTypes.Single(tt => tt.Id == taskTypeId);
+        task.StartTime = startTime;
+        task.EndTime = endTime;
+        var hours = CombineDaysAndHours(elapsedTime.Days, elapsedTime.Hours);
+        var strHours = hours < 10 ? "0" + hours : hours.ToString();
+        task.ElapsedTime = strHours + ":" + elapsedTime.ToString("mm\\:ss");
+        _tasks.Add(task);
+        _context.SaveChanges();
+    }
 
     public void UpdateTask(string id, string name, DateTime startDate, int startHours, int startMinutes, int startSeconds, string startPeriod, 
         DateTime endDate, int endHours, int endMinutes, int endSeconds, string endPeriod, int taskTypeId)
@@ -122,4 +139,5 @@ public class TaskStopwatchService : ITaskStopwatchService
     {
         return days * 24 + hours;
     }
+
 }
