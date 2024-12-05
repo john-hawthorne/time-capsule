@@ -117,7 +117,7 @@ public class TaskSchedulerService : ITaskSchedulerService
         }
 
         // 3) Create Placeholder Tasks
-        var adjustedCount = 15 - taskNames.Count();
+        var adjustedCount = 18 - taskNames.Count();
         for(int i = 0; i < adjustedCount; i++)
         {
             var task = new Task();
@@ -137,7 +137,7 @@ public class TaskSchedulerService : ITaskSchedulerService
     {
         // Prepare Timeslot
         var timeSlotsList = new List<TimeSlot>();
-        var times = new List<int>() { 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 };
+        var times = new List<int>() {6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 };
 
         // Create Timeslots from Tasks
         foreach (var task in tasks)
