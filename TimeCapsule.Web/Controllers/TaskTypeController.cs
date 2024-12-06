@@ -14,7 +14,7 @@ public class TaskTypeController : ControllerBase
         _taskTypeService = taskStopwatchService;
     }
     
-    [HttpGet]
+    [HttpGet("GetTaskTypes")]
     public IActionResult GetTaskTypes()
     {
         var taskTypes = _taskTypeService.GetTaskTypes();
