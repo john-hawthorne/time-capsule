@@ -16,6 +16,15 @@ namespace TimeCapsule.Services
             _taskTypes = _context.Set<TaskType>();
         }
 
+        public void AddTaskType(string taskTypeName)
+        {
+            var taskType = new TaskType();
+            taskType.Name = taskTypeName;
+            _taskTypes.Add(taskType);
+
+            _context.SaveChanges();
+        }
+
         public IEnumerable<TaskTypeDto> GetTaskTypes()
         {
             var taskTypes = _taskTypes;

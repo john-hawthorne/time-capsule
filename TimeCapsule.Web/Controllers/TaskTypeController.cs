@@ -20,4 +20,11 @@ public class TaskTypeController : ControllerBase
         var taskTypes = _taskTypeService.GetTaskTypes();
         return Ok(taskTypes);
     }
+
+    [HttpPost("AddTaskType")]
+    public IActionResult AddTaskType(string taskTypeName)
+    {
+        _taskTypeService.AddTaskType(taskTypeName);
+        return Ok();
+    }
 }
