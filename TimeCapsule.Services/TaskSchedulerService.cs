@@ -60,16 +60,7 @@ public class TaskSchedulerService : ITaskSchedulerService
     public void UpdateSchedule(string[] taskNames, DateTime scheduleDate, int taskTypeId)
     {
         // 1) Remove schedule
-        var existingSchedule = _schedules.Include(s=> s.TimeSlots).ThenInclude(ts => ts.Task).Single(s => s.ScheduleDate == scheduleDate);
-
-        foreach (var timeSlot in existingSchedule.TimeSlots)
-        {
-            var task = _tasks.Single(t => t.Id == timeSlot.Task.Id);
-            _tasks.Remove(task);
-            _timeSlots.Remove(timeSlot);
-        }
-
-        _schedules.Remove(existingSchedule);
+        DeleteSchedule(scheduleDate);
         
         // 1) Create Schedule
         var schedule = new Schedule
@@ -94,6 +85,21 @@ public class TaskSchedulerService : ITaskSchedulerService
             _timeSlots.Add(timeSlot);
         }
         _schedules.Add(schedule);
+        _context.SaveChanges();
+    }
+
+    public void DeleteSchedule(DateTime scheduleDate)
+    {
+        var existingSchedule = _schedules.Include(s => s.TimeSlots).ThenInclude(ts => ts.Task).Single(s => s.ScheduleDate == scheduleDate);
+
+        foreach (var timeSlot in existingSchedule.TimeSlots)
+        {
+            var task = _tasks.Single(t => t.Id == timeSlot.Task.Id);
+            _tasks.Remove(task);
+            _timeSlots.Remove(timeSlot);
+        }
+
+        _schedules.Remove(existingSchedule);
         _context.SaveChanges();
     }
 

@@ -39,4 +39,12 @@ public class TaskSchedulerController : ControllerBase
 
         return Ok();
     }
+
+    [HttpDelete]
+    public IActionResult DeleteSchedule(DateTime selectedDate)
+    {
+        _taskSchedulerService.DeleteSchedule(selectedDate);
+
+        return Ok();
+    }
 }

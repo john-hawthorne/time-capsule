@@ -8,4 +8,6 @@ public interface ITaskSchedulerService
 
     public void AddSchedule(string[] taskNames, DateTime scheduleDate, int taskTypeId);
     public void UpdateSchedule(string[] taskNames, DateTime scheduleDate, int taskTypeId);
+
+    public void DeleteSchedule(DateTime scheduleDate);
 }
